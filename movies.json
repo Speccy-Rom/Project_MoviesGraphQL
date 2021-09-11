@@ -1,0 +1,51 @@
+[
+  {
+    "model": "movies.actor",
+    "pk": 1,
+    "fields": {
+      "name": "Michael B. Jordan",
+      "age": 41,
+      "description": "биография актера Michael B. Jordan"
+    }
+  },
+  {
+    "model": "movies.actor",
+    "pk": 2,
+    "fields": {
+      "name": "Sylvester Stallone",
+      "age": 45,
+      "description": "биография актера Sylvester Stallone"
+    }
+  },
+  {
+    "model": "movies.actor",
+    "pk": 3,
+    "fields": {
+      "name": "Roman Spiridonov",
+      "age": 39,
+      "description": "биография актера Roman Spiridonov"
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 1,
+    "fields": {
+      "title": "Creed",
+      "actors": [1, 2],
+      "year": "2015",
+      "description": "Описание фильма Creed",
+      "country": "USA"
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 2,
+    "fields": {
+      "title": "Летел Чекист",
+      "actors": [3],
+      "year": "2021",
+      "description": "Описание фильма Летел Чекист",
+      "country": "Russia"
+    }
+  }
+]
