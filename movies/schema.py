@@ -52,3 +52,39 @@ class MovieInput(graphene.InputObjectType):
     title = graphene.String()
     actors = graphene.List(ActorInput)
     year = graphene.Int()
+
+
+# Create mutations for actors
+class CreateActor(graphene.Mutation):
+    class Arguments:
+        input = ActorInput(required=True)
+
+    ok = graphene.Boolean()
+    actor = graphene.Field(ActorType)
+
+    @staticmethod
+    def mutate(root, info, input=None):
+        ok = True
+        actor_instance = Actor(name=input.name)
+        actor_instance.save()
+        return CreateActor(ok=ok, actor=actor_instance)
+
+
+class UpdateActor(graphene.Mutation):
+    class Arguments:
+        id = graphene.Int(required=True)
+        input = ActorInput(required=True)
+
+    ok = graphene.Boolean()
+    actor = graphene.Field(ActorType)
+
+    @staticmethod
+    def mutate(root, info, id, input=None):
+        ok = False
+        actor_instance = Actor.objects.get(pk=id)
+        if actor_instance:
+            ok = True
+            actor_instance.name = input.name
+            actor_instance.save()
+            return UpdateActor(ok=ok, actor=actor_instance)
+        return UpdateActor(ok=ok, actor=None)
