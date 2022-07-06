@@ -81,8 +81,7 @@ class UpdateActor(graphene.Mutation):
     @staticmethod
     def mutate(root, info, id, input=None):
         ok = False
-        actor_instance = Actor.objects.get(pk=id)
-        if actor_instance:
+        if actor_instance := Actor.objects.get(pk=id):
             ok = True
             actor_instance.name = input.name
             actor_instance.save()
@@ -127,8 +126,7 @@ class UpdateMovie(graphene.Mutation):
     @staticmethod
     def mutate(root, info, id, input=None):
         ok = False
-        movie_instance = Movie.objects.get(pk=id)
-        if movie_instance:
+        if movie_instance := Movie.objects.get(pk=id):
             ok = True
             actors = []
             for actor_input in input.actors:
