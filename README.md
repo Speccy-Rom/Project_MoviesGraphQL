@@ -27,5 +27,4 @@ python manage.py loaddata movies.json
 # Run the application
 python manage.py runserver
 ```
-
 If you go to http://127.0.0.1:8000/graphql/, you'll be able to interact with the API there.
